@@ -1,7 +1,7 @@
 # typed: false
 # frozen_string_literal: true
 
-class ScalaDepsZatp < Formula
+class ScalaDeps < Formula
   desc "Zat Plugin to fetch the latest stable dependency version for a Scala library"
   homepage "https://github.com/ssanj/scala-deps-zatp"
   url "https://github.com/ssanj/scala-deps-zatp/archive/refs/tags/v0.6.0.tar.gz"
