@@ -1,0 +1,24 @@
+# typed: false
+# frozen_string_literal: true
+
+class ScalaDepsZatp < Formula
+  desc "Zat Plugin to fetch the latest stable dependency version for a Scala library"
+  homepage "https://github.com/ssanj/scala-deps-zatp"
+  url "https://github.com/ssanj/scala-deps-zatp/archive/refs/tags/v$VERSION.tar.gz"
+  version "$VERSION"
+  sha256 "$SHA256"
+  license "BSD-3-Clause"
+
+  depends_on "rust" => :build
+  depends_on "coursier"
+
+  def install
+    system "cargo", "install", *std_cargo_args
+    bin.install "target/release/scala-deps"
+  end
+
+  test do
+    output = shell_output("#{bin}/scala-deps -V")
+    assert_equal ["scala-deps $VERSION\n"], output.lines
+  end
+end
