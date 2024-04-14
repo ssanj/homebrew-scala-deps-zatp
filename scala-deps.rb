@@ -9,8 +9,8 @@ class ScalaDeps < Formula
   sha256 "57f17cb584250e66b8c0f51e870273fdd614260369128563eb38f0c39d70c009"
   license "BSD-3-Clause"
 
-  depends_on "rust" => :build
   depends_on "coursier"
+  depends_on "rust" => :build
 
   def install
     system "cargo", "install", *std_cargo_args
