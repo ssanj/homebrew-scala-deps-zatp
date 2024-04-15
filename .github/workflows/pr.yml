@@ -7,5 +7,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - env:
-          MESSAGE: ${{ github.event.client_payload.version }}
-        run: echo $MESSAGE
+          APP_VERSION: ${{ github.event.client_payload.version }}
+          APP_SHA: ${{ github.event.client_payload.sha }}
+        run: |
+          echo "VERSION: $APP_VERSION"
+          echo "SHA256: $APP_SHA"
