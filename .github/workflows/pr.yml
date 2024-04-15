@@ -15,7 +15,8 @@ jobs:
 
       - name: Generate Homebrew Formula
         run: |
-          cat templates/scala-deps.rb.template | sed "s/\$VERSION/$APP_VERSION/g" | sed "s/\$SHA256/$APP_SHA256/g" > scala-deps.rb
+          ls -l "$PWD"
+          cat "$PWD"/templates/scala-deps.rb.template | sed "s/\$VERSION/$APP_VERSION/g" | sed "s/\$SHA256/$APP_SHA256/g" > scala-deps.rb
           cat scala-deps.rb
           BRANCH="version_$APP_VERSION"
           git checkout -b "$BRANCH"
