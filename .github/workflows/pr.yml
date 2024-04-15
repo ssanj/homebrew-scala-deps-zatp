@@ -1,0 +1,11 @@
+on:
+  repository_dispatch:
+    types: [homebrew-pr]
+
+jobs:
+  run_on_hook:
+    runs-on: macos-latest
+    steps:
+      - env:
+          MESSAGE: ${{ github.event.client_payload.app_settings }}
+        run: echo $MESSAGE
