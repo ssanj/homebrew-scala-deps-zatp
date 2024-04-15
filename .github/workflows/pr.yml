@@ -8,7 +8,17 @@ jobs:
     steps:
       - env:
           APP_VERSION: ${{ github.event.client_payload.version }}
-          APP_SHA: ${{ github.event.client_payload.sha }}
+          APP_SHA256: ${{ github.event.client_payload.sha }}
         run: |
           echo "VERSION: $APP_VERSION"
           echo "SHA256: $APP_SHA"
+
+      - name: Generate Homebrew Formula
+        run: |
+          cat templates/scala-deps.rb.template | sed "s/\$VERSION/$APP_VERSION/g" | sed "s/\$SHA256/$APP_SHA256/g" > scala-deps.rb
+          cat scala-deps.rb
+          BRANCH="version_$APP_VERSION"
+          git checkout -b "$BRANCH"
+          git add .
+          git commit -m"Update to scala-deps version to $APP_VERSION"
+          git push origin "$BRANCH"
