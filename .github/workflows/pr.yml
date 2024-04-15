@@ -7,5 +7,5 @@ jobs:
     runs-on: macos-latest
     steps:
       - env:
-          MESSAGE: ${{ github.event.client_payload.app_settings }}
+          MESSAGE: ${{ github.event.client_payload }}
         run: echo $MESSAGE
