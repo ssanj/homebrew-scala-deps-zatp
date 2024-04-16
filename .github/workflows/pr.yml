@@ -26,3 +26,4 @@ jobs:
           git add .
           git commit -m"Update to scala-deps version to $APP_VERSION"
           git push origin "$BRANCH"
+          gh pr create --title "Update to $APP_VERSION" --body "Bump scala-deps version to $APP_VERSION"
