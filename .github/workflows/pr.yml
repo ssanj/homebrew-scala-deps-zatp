@@ -6,13 +6,6 @@ jobs:
   run_on_hook:
     runs-on: macos-latest
     steps:
-      - env:
-          APP_VERSION: ${{ github.event.client_payload.version }}
-          APP_SHA256: ${{ github.event.client_payload.sha }}
-        run: |
-          echo "VERSION: $APP_VERSION"
-          echo "SHA256: $APP_SHA"
-
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
@@ -21,6 +14,11 @@ jobs:
       - name: Generate Homebrew Formula
         run: |
           ls -l "$PWD"
+          APP_VERSION=${{ github.event.client_payload.version }}
+          APP_SHA256=${{ github.event.client_payload.sha }}
+          echo "VERSION: $APP_VERSION"
+          echo "SHA256: $APP_SHA256"
+
           cat "$PWD"/templates/scala-deps.rb.template | sed "s/\$VERSION/$APP_VERSION/g" | sed "s/\$SHA256/$APP_SHA256/g" > scala-deps.rb
           cat scala-deps.rb
           BRANCH="version_$APP_VERSION"
