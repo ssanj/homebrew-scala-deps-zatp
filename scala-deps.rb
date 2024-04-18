@@ -6,7 +6,7 @@ class ScalaDeps < Formula
   homepage "https://github.com/ssanj/scala-deps-zatp"
   url "https://github.com/ssanj/scala-deps-zatp/archive/refs/tags/v0.6.2.tar.gz"
   version "0.6.2"
-  sha256 "0908d11a2e8f7981c569d72acb26be000eee70579e03e3fef2cf7e92cd9e51e7"
+  sha256 "664c857c97545f7cffb55d06f2075b86b9e46d88e7a6c1634f0e5e968430ce45"
   license "BSD-3-Clause"
 
   depends_on "rust" => :build
